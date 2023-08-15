@@ -19,35 +19,27 @@ main(){
     //entrada de dados
     printf("\n-> Nome: ");
     fgets(nome, 50, stdin);
-    fflush(stdin);
 
     printf("-> Idade: ");
     scanf("%d", &idade);
-    fflush(stdin);
 
     printf("-> Matricula: ");
     fgets(matr, 10, stdin);
-    fflush(stdin);
 
     printf("-> Endereco: ");
     fgets(endereco, 60, stdin);
-    fflush(stdin);
 
     printf("-> Curso: ");
     fgets(curso, 50, stdin);
-    fflush(stdin);
 
     printf("-> Periodo: ");
     fgets(periodo, 50, stdin);
-    fflush(stdin);
 
     printf("-> Disciplina: ");
     fgets(disciplina, 100, stdin);
-    fflush(stdin);
 
     printf("-> Valor da Mensalidade: R$");
     scanf("%f", &ValorMensalidade);
-    fflush(stdin);
     
     printf("\n____________________________________________");
     printf("\n      CADASTRO FINALIZADO COM SUCESSO!      ");
