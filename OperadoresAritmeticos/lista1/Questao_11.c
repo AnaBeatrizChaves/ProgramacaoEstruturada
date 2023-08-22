@@ -4,9 +4,21 @@
 */
 
 main(){
-    int carrosVend, vendaTotal, salarioFixo, valorPorCarroVend, salarioFinal;
+    int carrosVend;
+    float vendaTotal, salarioFixo, comissao, salarioFinal, percentualSobreVenda;
 
     printf("Preencha os campos abaixo:");
-    printf("/nNumero de carros vendidos: ");
-    scanf("") 
+    printf("\nNumero de carros vendidos: ");
+    scanf("%d", &carrosVend);
+    printf("Valor total de vendas: R$ ");
+    scanf("%f", &vendaTotal);
+    printf("Salario Fixo: R$ ");
+    scanf("%f", &salarioFixo);
+    printf("Comissao por carro vendido: R$ ");
+    scanf("%f", &comissao);
+
+    percentualSobreVenda = 0.05;
+    salarioFinal = salarioFixo + (carrosVend * comissao) + (percentualSobreVenda * vendaTotal);
+
+    printf("O salario final do vendedor e = R$ %.2f", salarioFinal);
 }

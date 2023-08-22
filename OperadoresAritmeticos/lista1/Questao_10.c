@@ -11,9 +11,9 @@ main(){
     printf("Digite o custo de fabrica do carro: R$ ");
     scanf("%f", &custoFabrica);
 
-    porcDistri = ((28/100) * custoFabrica);
-    porcImpost = ((45/100) * custoFabrica);
-    custoFinal = porcDistri + porcImpost;
+    porcDistri = 0.28;
+    porcImpost = 0.45;
+    custoFinal = custoFabrica + (porcDistri * custoFabrica) + (porcImpost * custoFabrica);
 
     printf("O custo final do carro ao consumidor e de: R$ %.2f", custoFinal);  
 }
