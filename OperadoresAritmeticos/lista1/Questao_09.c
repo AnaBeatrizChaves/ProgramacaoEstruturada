@@ -7,12 +7,12 @@ main(){
 
     float salario, reajuste, novoSalario;
 
-    printf("Digite o salário mensal atual: R$ ");
+    printf("Digite o salario mensal atual: R$ ");
     scanf("%f", &salario);
     printf("Digite o percentual de reajuste: ");
     scanf("%f", &reajuste);
 
     novoSalario = ((reajuste/100) + 1) * salario;
 
-    printf("O valor do novo salário e : R$ %.2f", novoSalario);    
+    printf("O valor do novo salario e : R$ %.2f", novoSalario);    
 }
