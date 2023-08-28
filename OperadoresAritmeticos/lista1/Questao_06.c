@@ -24,5 +24,5 @@ main(){
     lucro = (valorVenda - totalGasto);
     percentual = (lucro * 100)/valorVenda;
 
-    printf("A porcentagem de lucro da mercadoria e = %.2f porcento", percentual);                                     
+    printf("A porcentagem de lucro da mercadoria e = %.2f%%", percentual);                                     
 }
