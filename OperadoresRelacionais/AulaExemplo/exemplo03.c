@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+//3. Leia a altura e imprima se é maior que 1.8m
 main(){
     float altura;
 

@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+//2. Leia o salário e imprima se ganha mais que o mínimo
 main(){
     float salario;
 
