@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+//1. Leia a idade e imprima se a pessoa é maior
 main(){
     int idade;
 
