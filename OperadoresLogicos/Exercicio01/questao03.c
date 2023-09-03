@@ -20,6 +20,14 @@ main() {
         num1 = c;
     }
 
+    if ((a > b) && (a < c)){
+        num2 = a; 
+    } else if ((b > a) && (b < c)){
+        num2 = b;
+    }else{
+        num2 = c;
+    }
+
     if ((a > b) && (a > c)){
         num3 = a; 
     } else if ((b > a) && (b > c)){
@@ -27,10 +35,6 @@ main() {
     }else{
         num3 = c;
     }
-
-    if (num2 > num1) && (num2 < num1)
-
     
-
- 
+    printf("A ordem dos numeros em forma ascendente e = %d, %d, %d", num1, num2, num3); 
 }
