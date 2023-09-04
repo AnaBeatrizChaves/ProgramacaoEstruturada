@@ -3,15 +3,17 @@
 //Escreva um algoritmo que leia um número e imprima a raiz quadrada do número caso ele seja positivo ou igual a zero e o quadrado do número caso ele seja negativo.
 
 main(){
-    int numero;
+    float numero, resultado;
 
     printf("Digite um numero: ");
-    scanf("%d", &numero);
+    scanf("%f", &numero);
 
     if (numero >= 0) {
-        printf("A raiz quadrada do numero %d e = %.2f", numero, sqrt(numero));
+        resultado = sqrt(numero);
+        printf("A raiz quadrada do numero %.2f e = %.2f", numero, resultado);
     }else{
-        printf("O quadrado do numero %d e = %.2f", numero, pow(numero, 2));
+        resultado = pow(numero, 2);
+        printf("O quadrado do numero %.2f e = %.2f", numero, resultado);
     }
  
 }
