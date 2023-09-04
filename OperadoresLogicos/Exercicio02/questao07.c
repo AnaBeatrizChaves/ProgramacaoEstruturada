@@ -17,7 +17,7 @@ main(){
     printf("PROVA 03: ");
     scanf("%f", &prova3);
 
-    mediaPond = ((1 * prova1) + (1 * prova2) + (2 * prova3)) / 1 + 1 + 2
+    mediaPond = ((1 * prova1) + (1 * prova2) + (2 * prova3)) / 1 + 1 + 2;
     printf("A media final do aluno e %.2f pontos\n", mediaPond);
 
     if (mediaPond >= 7) {
