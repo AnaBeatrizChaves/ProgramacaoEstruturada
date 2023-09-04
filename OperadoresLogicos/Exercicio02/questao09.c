@@ -5,20 +5,40 @@
 
 • o tempo de serviço desse funcionário na empresa (número de anos de trabalho na empresa).
 
-Use as tabelas abaixo para calcular o salario reajustado deste funcionário e imprima o valor do salario final reajustado, ou uma mensagem caso o funcionário não tenha direito a nenhum aumento. */
+Use as tabelas */
 
 main(){
-    float salarioAtual, novoSalario;
-    int tempServico;
+    float salarioAtual, novoSalario, tempServico;
 
-    printf("Preencha os campos abaixo: ");
+    printf("---------------------------"); 
+    printf("\nPreencha os campos abaixo: ");
     printf("\n---------------------------"); 
     printf("\nValor do salario atual: R$ ");
     scanf("%f", &salarioAtual);
-    printf("Tempo de serviço na empresa (número de anos de trabalho na empresa): ");
-    scanf("%d", &tempServico);
+    printf("Tempo de servico na empresa (numero de anos de trabalho na empresa): ");
+    scanf("%f", &tempServico);
 
-     novoSalario = ((reajuste/100) + 1) * salario;
+    if ((salarioAtual <= 500) && (tempServico < 1) ){
+        novoSalario = 1.25 * salarioAtual;
+        printf("--\nValor do salario final: R$ %.2f", novoSalario);
 
-    if ()
+    }else if ((salarioAtual <= 1000) && (tempServico >= 1 && tempServico <= 3)) {
+        novoSalario = (1.2 * salarioAtual) + 100; // bonus de R$100
+        printf("--\nValor do salario final: R$ %.2f", novoSalario);
+
+    }else if ((salarioAtual <= 1500) && (tempServico >= 4 && tempServico <= 6)) {
+        novoSalario = (1.15 * salarioAtual) + 200; // bonus de R$200
+        printf("--\nValor do salario final: R$ %.2f", novoSalario);
+
+    }else if ((salarioAtual <= 2000) && (tempServico >= 7 && tempServico <= 10)) {
+        novoSalario = (1.1 * salarioAtual) + 300; // bonus de R$300
+        printf("--\nValor do salario final: R$ %.2f", novoSalario);
+
+    }else if ((salarioAtual > 2000) && (tempServico > 10)) {
+        novoSalario = salarioAtual + 500; // bonus de R$500
+        printf("--\nValor do salario final: R$ %.2f", novoSalario);
+
+    }else{
+        printf("O funcionario nao tem direito a nenhum aumento!!");
+    }
 }
