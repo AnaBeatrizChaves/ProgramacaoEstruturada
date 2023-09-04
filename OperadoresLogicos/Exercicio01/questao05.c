@@ -13,7 +13,7 @@ main(){
         printf("O numero digitado e igual a 200");
     }else if (num == 400){
         printf("O numero digitado e igual a 400");
-    }else if ((num >= 500) && (num <= 1000)){
+    }else if ((num > 500) && (num < 1000)){
         printf("O numero digitado esta no intervalo entre 500 e 1000");
     }else{
         printf("O numero digitado esta fora dos escopos!!");
