@@ -8,5 +8,17 @@
 Use as tabelas abaixo para calcular o salario reajustado deste funcionário e imprima o valor do salario final reajustado, ou uma mensagem caso o funcionário não tenha direito a nenhum aumento. */
 
 main(){
+    float salarioAtual, novoSalario;
+    int tempServico;
 
+    printf("Preencha os campos abaixo: ");
+    printf("\n---------------------------"); 
+    printf("\nValor do salario atual: R$ ");
+    scanf("%f", &salarioAtual);
+    printf("Tempo de serviço na empresa (número de anos de trabalho na empresa): ");
+    scanf("%d", &tempServico);
+
+     novoSalario = ((reajuste/100) + 1) * salario;
+
+    if ()
 }

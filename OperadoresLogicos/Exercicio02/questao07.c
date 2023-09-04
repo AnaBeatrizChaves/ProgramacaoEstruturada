@@ -9,7 +9,7 @@ main(){
     float prova1, prova2, prova3, mediaPond;
 
     printf("Preencha os campos abaixo: ");
-    printf("Notas---------------------\n");
+    printf("\nNotas---------------------\n");
     printf("PROVA 01: ");
     scanf("%f", &prova1);
     printf("PROVA 02 ");

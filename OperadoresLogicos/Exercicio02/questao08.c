@@ -9,5 +9,19 @@ As condições para aposentadoria são:
 main(){
     int idade, tempServico;
 
-    printf("Preencha os campos abaixo")
+    printf("Preencha os campos abaixo: ");
+    printf("\nIDADE: ");
+    scanf("%d", &idade);
+    printf("TEMPO DE SERVICO (em anos): ");
+    scanf("%d", &tempServico);
+
+    if (idade >= 65) {
+        printf("Este trabalhor PODE se aposentar!!");
+    } else if (tempServico >= 30) {
+        printf("Este trabalhor PODE se aposentar!!");
+    } else if ((idade >= 60) && (tempServico >= 25)) {
+        printf("Este trabalhor PODE se aposentar!!");
+    }else {
+        printf("Este trabalhor NAO PODE se aposentar!!");
+    }
 }
