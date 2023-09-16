@@ -5,8 +5,8 @@ main(){
 	int i = 0, contador = 0;
 
     printf("OS 5 PRIMEIROS MULTIPLOS DE 3 SAO: \n");
-	for(i = 0 ; i < 15 ; i++){
-		if(i % 3 == 0){
+	for(i = 0 ; i < 18 ; i++){
+		if(i % 3 == 0 & i != 0){
 		    contador++;
 		    printf("%d\n", i);
 		}
