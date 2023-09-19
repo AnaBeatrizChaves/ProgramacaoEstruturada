@@ -38,8 +38,12 @@ main(){
         }while(idade != -1 && (idade < 10 || idade > 100));
 
         do{
+<<<<<<< HEAD
             printf("m -> Masculino / f -> Feminino");
             printf("\n- SEXO: ");
+=======
+            printf("\nSEXO (m -> Masculino / f -> Feminino): ");
+>>>>>>> 6fca7905c37418005126a13385af87efe80f9f8b
             scanf("%c", &sexo);
             fflush(stdin);
             printf("\n-----------------");
@@ -68,7 +72,7 @@ main(){
         }while(salario < 0);
 
 
-        if (sexo == 'f' && idade > 18 && idade < 35 && corOlhos == 'c' && corCabelos == 'c'){
+        if (sexo == 'f' && corOlhos == 'c' && corCabelos == 'c' && idade > 18 && idade < 35){
             contador_esp++;
         }
 
