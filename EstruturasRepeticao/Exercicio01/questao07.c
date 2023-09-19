@@ -31,22 +31,15 @@ main(){
         do{
             printf("\n- IDADE (de 10 a 100 anos): ");
             scanf("%d", &idade);
-                if(idade < 10 || idade > 100){
-                    printf("\nOpcao invalida...\ntente novamente!\n");
-                }
             printf("-----------------\n");
         }while(idade != -1 && (idade < 10 || idade > 100));
 
         do{
-<<<<<<< HEAD
-            printf("m -> Masculino / f -> Feminino");
-            printf("\n- SEXO: ");
-=======
-            printf("\nSEXO (m -> Masculino / f -> Feminino): ");
->>>>>>> 6fca7905c37418005126a13385af87efe80f9f8b
+            fflush(stdin);
+            printf("- SEXO (m -> Masculino / f -> Feminino): ");
             scanf("%c", &sexo);
             fflush(stdin);
-            printf("\n-----------------");
+            printf("-----------------\n");
         }while(sexo !='f' && sexo != 'm');
         
         do{
