@@ -26,23 +26,20 @@ main(){
 
         switch (fruta) {
     case 1:
-        total = (5 * quant);
-        printf("--> RESUMO DO PEDIDO\n");
-        printf("%d - Abacaxi(s)\n", quant);
+        total = total + (5 * quant);
+        printf("--> TOTAL DA COMPRA\n");
         printf("TOTAL = R$ %.2f", total);
         printf("\n-----------------------------------------------\n");
         break;
     case 2:
-        total = (1 * quant);
-        printf("--> RESUMO DO PEDIDO\n");
-        printf("%d - Maca(s)\n", quant);
+        total = total + (1 * quant);
+        printf("--> TOTAL DA COMPRA\n");
         printf("TOTAL = R$ %.2f", total);
         printf("\n-----------------------------------------------\n");
         break;
     case 3:
-        total = (4* quant);
-        printf("--> RESUMO DO PEDIDO\n");
-        printf("%d - Pera\n", quant);
+        total = total + (4* quant);
+        printf("--> TOTAL DA COMPRA\n");
         printf("TOTAL = R$ %.2f", total);
         printf("\n-----------------------------------------------\n");
         break;

@@ -17,33 +17,69 @@ Ao final, o algoritmo deve determinar a porcentagem de indivíduos do sexo femin
 
 main(){
     char sexo, corOlhos, corCabelos;
-    int idade;
-    float salario;
+    int idade, contador_geral = 0, contador_esp = 0;
+    float salario, porcentagem;
 
     do{
-        printf("----------------- PESQUISA ------------------\n");
+        contador_geral ++;
+        fflush(stdin);
+
+        printf("\n----------------- PESQUISA ------------------\n");
         printf("Preencha os campos abaixo: \n");
         printf("---------------------------------------------\n");
-        printf("- IDADE (em anos): ");
-        scanf("%d", &idade);
-        printf("-----------------");
-        printf("M -> Masculino\nF -> Feminino\n");
-        printf("- SEXO: ");
-        scanf("%s", &sexo);
-        printf("-----------------");
-        printf("\nA -> Azul\nV -> Verde\nC -> Castanho\nP -> Preto\n");
-        printf("- COR DOS OLHOS: ");
-        scanf("%s", &corOlhos);
-        printf("-----------------");
-        printf("\nL -> Loiro\nC -> Castanho\nP -> Preto\nR -> Ruivo\n");
-        printf("- COR DOS CABELOS: ");
-        scanf("%s", &corCabelos);
-        printf("-----------------");
-        printf("- SALARIO: R$ ");
-        scanf("%f", &salario);
+
+        do{
+            printf("\n- IDADE (de 10 a 100 anos): ");
+            scanf("%d", &idade);
+                if(idade < 10 || idade > 100){
+                    printf("\nOpcao invalida...\ntente novamente!\n");
+                }
+            printf("-----------------");
+        }while(idade != -1 && (idade < 10 || idade > 100));
+
+        do{
+            printf("\nm -> Masculino / f -> Feminino");
+            printf("\n- SEXO: ");
+            scanf("%s", &sexo);
+            fflush(stdin);
+            printf("-----------------\n");
+        }while(sexo !='f' && sexo != 'm');
         
+        do{
+            printf("a -> Azul\nv -> Verde\nc -> Castanho\np -> Preto\n");
+            printf("- COR DOS OLHOS: ");
+            scanf("%s", &corOlhos);
+            fflush(stdin);
+            printf("-----------------\n");
+        }while(corOlhos != 'a' && corOlhos != 'v' && corOlhos != 'c' && corOlhos != 'p');
+        
+        do{
+            printf("l -> Loiro\nc -> Castanho\np -> Preto\nr -> Ruivo\n");
+            printf("- COR DOS CABELOS: ");
+            scanf("%s", &corCabelos);
+            fflush(stdin);
+            printf("-----------------\n");
+        }while(corCabelos != 'l' && corCabelos != 'c' && corCabelos != 'p' && corCabelos != 'r');
+        
+        do{
+            printf("- SALARIO: R$ ");
+            scanf("%f", &salario);
+            printf("-----------------\n");
+        }while(salario < 0);
 
 
-        printf("\nOBSERVACAO: Caso deseje encerrar a pesquisa, digite -1 para o campo idade.");
+        if (sexo == 'f' && idade > 18 && idade < 35 && corOlhos == 'c' && corCabelos == 'c'){
+            contador_esp++;
+        }
+
+        printf("\nOBSERVACAO:\nDigite -1 para sair\n0 para continuar!!\n");
+        scanf("%d", &idade);
     }while(idade != -1);
+
+        porcentagem = (float)contador_esp * 100 / contador_geral;
+
+        printf("\nTotal de Cadastros: %d", contador_geral);
+        printf("\nPorcentagem de mulheres com caracteristicas especificas: %.2f", porcentagem);
+
+    
 }
