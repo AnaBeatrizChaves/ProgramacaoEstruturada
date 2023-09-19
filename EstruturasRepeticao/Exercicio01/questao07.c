@@ -31,16 +31,12 @@ main(){
         do{
             printf("\n- IDADE (de 10 a 100 anos): ");
             scanf("%d", &idade);
-                if(idade < 10 || idade > 100){
-                    printf("\nOpcao invalida...\ntente novamente!\n");
-                }
-            printf("-----------------");
+            printf("-----------------\n");
         }while(idade != -1 && (idade < 10 || idade > 100));
 
         do{
-            printf("\nm -> Masculino / f -> Feminino");
-            printf("\n- SEXO: ");
-            scanf("%s", &sexo);
+            printf("\nSEXO (m -> Masculino / f -> Feminino): ");
+            scanf("%c", &sexo);
             fflush(stdin);
             printf("-----------------\n");
         }while(sexo !='f' && sexo != 'm');
@@ -48,7 +44,7 @@ main(){
         do{
             printf("a -> Azul\nv -> Verde\nc -> Castanho\np -> Preto\n");
             printf("- COR DOS OLHOS: ");
-            scanf("%s", &corOlhos);
+            scanf("%c", &corOlhos);
             fflush(stdin);
             printf("-----------------\n");
         }while(corOlhos != 'a' && corOlhos != 'v' && corOlhos != 'c' && corOlhos != 'p');
@@ -56,7 +52,7 @@ main(){
         do{
             printf("l -> Loiro\nc -> Castanho\np -> Preto\nr -> Ruivo\n");
             printf("- COR DOS CABELOS: ");
-            scanf("%s", &corCabelos);
+            scanf("%c", &corCabelos);
             fflush(stdin);
             printf("-----------------\n");
         }while(corCabelos != 'l' && corCabelos != 'c' && corCabelos != 'p' && corCabelos != 'r');
@@ -68,7 +64,7 @@ main(){
         }while(salario < 0);
 
 
-        if (sexo == 'f' && idade > 18 && idade < 35 && corOlhos == 'c' && corCabelos == 'c'){
+        if (sexo == 'f' && corOlhos == 'c' && corCabelos == 'c' && idade > 18 && idade < 35){
             contador_esp++;
         }
 
