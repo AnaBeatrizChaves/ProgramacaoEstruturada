@@ -26,6 +26,7 @@ main(){
             printf("-- Triangulo Isosceles.");
         }
     }else{
-        printf("Os valores dos medidas dos lados, não correspondem a um triangulo.")
+        printf("Os valores dos medidas dos lados, não correspondem a um triangulo.");
     }
+}
     
