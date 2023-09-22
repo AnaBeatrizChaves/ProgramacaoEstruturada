@@ -15,9 +15,4 @@ main(){
 
     printf("O resuldado da Funcao(X) e = %.2f", funcao);
     printf("\n--------------------------\n");
-
-
-
-
-
 }

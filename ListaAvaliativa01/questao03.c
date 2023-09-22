@@ -16,17 +16,16 @@ main(){
     scanf("%f", &C);
 
     if (A + B > C && A + C > B && B + C > A){
-        printf("Os valores dos lados formam um triangulo.\n");
-        printf("TIPO:\n");
+        printf("TRIANGULO DO TIPO:\n");
         if (A == B && B == C) {
-            printf("-- Triangulo Equilatero.");
+            printf("-- Equilatero.");
         }else if(A != B && B != C){
-            printf("-- Triangulo Escaleno.");
+            printf("-- Escaleno.");
         }else{
-            printf("-- Triangulo Isosceles.");
+            printf("-- Isosceles.");
         }
     }else{
-        printf("Os valores dos medidas dos lados, não correspondem a um triangulo.");
+        printf("Os valores dos medidas dos lados, não correspondem a um triangulo!");
     }
 }
     
