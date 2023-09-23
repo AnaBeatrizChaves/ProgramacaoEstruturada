@@ -8,7 +8,7 @@ main(){
     scanf("%d", &num);
 
     while (contador <= num ){
-        printf("\n%d", contador20);
+        printf("\n%d", contador);
         contador++;
     }
 }
