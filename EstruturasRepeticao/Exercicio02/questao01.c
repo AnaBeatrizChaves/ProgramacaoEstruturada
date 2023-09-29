@@ -28,15 +28,14 @@ a diferença de idade entre a maior idade que respondeu ótimo e a maior idade q
 
 main() {
     float  porcentual, mediaIdadeRespRuim = 0, percPessimo;
-    int idade, registro = 1, cont = 0, otimo = 0, bom = 0, regular = 0, ruim = 0, pessimo = 0, diferenca, contSalMenor100 = 0, maiorIdadePes = 0, maiorIdadeOtim = 0, maiorIdadeRuim = 0, difIdade;
+    int idade, cont = 0, otimo = 0, bom = 0, regular = 0, ruim = 0, pessimo = 0, diferenca, maiorIdadePes = 0, maiorIdadeOtim = 0, maiorIdadeRuim = 0, difIdade;
     char nota;
 
 
     do {
         printf("\n\n=========== PESQUISA - AVALIACAO =========\n");
-        registro++;
         cont++;
-        printf("REGISTRO %d", registro);
+        printf("REGISTRO %d", cont);
         printf("\nPreencha os campos abaixo\n");
         printf("Idade: ");
         scanf("%d", &idade);
@@ -71,7 +70,7 @@ main() {
                 }    
             }
 
-    }while (registro <= 100);
+    }while (cont <= 2);
         diferenca = (bom - regular);
         porcentual = (diferenca * 100.0) / cont;
         mediaIdadeRespRuim /= ruim;
@@ -79,8 +78,8 @@ main() {
         difIdade = (maiorIdadeOtim - maiorIdadeRuim);
         
         printf("\n\n_______________ RESULTADOS ________________\n");
-        printf("Quantidade de respostas otimo: ", otimo);
-        printf("\nDiferença percentual entre respostas bom e regular: %.2f %%", percentual);
+        printf("Quantidade de respostas otimo: %d", otimo);
+        printf("\nDiferenca percentual entre respostas bom e regular: %.2f %%", porcentual);
         printf("\nMedia de idade das pessoas que responderam ruim: %.2f", mediaIdadeRespRuim);
         printf("\nPercentual de respostas pessimo e a maior idade que utilizou esta opcao: %.2f %% e %d", percPessimo, maiorIdadePes);
         printf("\nDiferença de idade entre a maior idade que respondeu otimo e a maior idade que respondeu ruim: %.2f", difIdade);
