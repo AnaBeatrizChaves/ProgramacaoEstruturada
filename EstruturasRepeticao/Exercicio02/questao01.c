@@ -70,18 +70,18 @@ main() {
                 }    
             }
 
-    }while (cont <= 2);
+    }while (cont < 100);
         diferenca = (bom - regular);
         porcentual = (diferenca * 100.0) / cont;
-        mediaIdadeRespRuim /= ruim;
+        mediaIdadeRespRuim /= cont;
         percPessimo = (pessimo * 100.0) / cont;
         difIdade = (maiorIdadeOtim - maiorIdadeRuim);
         
         printf("\n\n_______________ RESULTADOS ________________\n");
         printf("Quantidade de respostas otimo: %d", otimo);
-        printf("\nDiferenca percentual entre respostas bom e regular: %.2f %%", porcentual);
+        printf("\nDiferenca percentual entre respostas bom e regular: %.2f%%", porcentual);
         printf("\nMedia de idade das pessoas que responderam ruim: %.2f", mediaIdadeRespRuim);
         printf("\nPercentual de respostas pessimo e a maior idade que utilizou esta opcao: %.2f %% e %d", percPessimo, maiorIdadePes);
-        printf("\nDiferença de idade entre a maior idade que respondeu otimo e a maior idade que respondeu ruim: %.2f", difIdade);
+        printf("\nDiferenca de idade entre a maior idade que respondeu otimo e a maior idade que respondeu ruim: %d", difIdade);
 }
         
