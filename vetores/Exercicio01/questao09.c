@@ -1,18 +1,25 @@
 #include<stdio.h>
 
 main(){
-    int vetor[6];
+int num[6];
 
-    for (int i = 0; i < 6; i++) {
-        if(vetor[i] % 2 == 0) {
-            printf("\nDigite um numero PAR: ");
-            scanf("%d", &vetor[i]);
-        }else {
-            printf("Numero invalido...tente novamente!");
-        }   
-    }
-    printf("\n---------------------\n");
-    for (int i = 5; i >= 0; i--) {
-        printf("\nVETOR PAR INVERTIDO:%d", vetor[i]);
-    }
+  for(int i=0;i<6 ;i++){
+      
+     printf("\nDigite um numero par:\n");
+     scanf("%d",&num[i]);
+
+      if(num[i]%2 !=0){
+        printf("\nO numero digitado, não é um numero par.\n");
+         i--;
+      }
+
+  }
+
+   for(int i=5;i<6 ;i--){
+     printf("\n%d",num[i]);
+
+     if(num[i]==num[0]){
+       break;
+     }
+   }
 }
