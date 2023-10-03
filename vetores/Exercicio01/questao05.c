@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 main(){
-    int vetor[10], numPares, contPar = 0;
+    int vetor[10], contPar = 0;
 
     for (int i = 0; i < 10; i++) {
         printf("\nDigite um numero: ");
