@@ -12,7 +12,6 @@ int num[6];
         printf("\nO numero digitado, não é um numero par.\n");
          i--;
       }
-
   }
 
    for(int i=5;i<6 ;i--){
