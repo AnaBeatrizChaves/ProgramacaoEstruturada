@@ -1,4 +1,4 @@
-#Include<stdio.h>
+#include<stdio.h>
 
 main(){
   int vetor[5], menor=0, maior=0, media=0;
