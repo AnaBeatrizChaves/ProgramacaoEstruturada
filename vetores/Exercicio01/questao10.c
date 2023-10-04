@@ -1,6 +1,6 @@
 #include<stdio.h>
 //# define TAM 15  -- define o tamanho do vetor (vetor[TAM])
-       
+        
 main(){
 float notas[15], media = 0;
 
