@@ -16,55 +16,77 @@ e retorna a opção escolhida. No programa principal, testar a opção escolhida
 e ativar a função correspondente (uma função para cada opção). 
 */
 
-
-
-main(){
-
-   
+void mostraMenu(){
+    printf("\n====== OPCOES DE PAGAMENTO ======\n");
+    printf("\n---------------------------------");
+    printf("\n- Opcao 1: a vista com 10%% de desconto\n");
+    printf("---------------------------------\n");
+    printf("- Opção 2: em 2X vezes (preco da etiqueta)\n");
+    printf("---------------------------------\n");
+    printf("- Opção 3: de 3 ate 10X com 3%% de juros\nao mes sobre o valor de cada prestação\n(somente para compras acima de R$ 100,00)\n");
+    printf("---------------------------------");
 }
 
-
-/*
-    printf("=======================\n");
-    printf("==== TOTAL A PAGAR ====\n");
-    printf("Preencha o campo abaixo:\n");
-    printf("TOTAL GASTO = R$ ");
-    scanf("%f", &totalGasto);
-    printf("====== PAGAMENTO ======\n");
-    printf("Opcao 1: a vista com 10%% de desconto");
-    printf("Opção 2: em duas vezes (preco da etiqueta)");
-    printf("Opção 3: de 3 ate 10 vezes com 3%% de juros\nnao mes sobre o valor de cada prestação\n(somente para compras acima de R$ 100,00)");
-    printf("Digite a opcao correspondente: ");
-    scanf("%d", &opcao);
-*/
-    
-
-/*
-        float calculaOpcao01(float totalGasto){
-        float desconto = (totalGasto * (10/100));
+float calculaOpcao01(float totalGasto){
+        float desconto = (totalGasto * 0.1);
         float valorFinal = (totalGasto - desconto);
         return valorFinal;
 }
-*/
 
-/*
-        float calculaOpcao02(float totalGasto){
+float calculaOpcao02(float totalGasto){
         float valorFinal = totalGasto;
         return valorFinal;
 }
-*/
 
-/*
 float calculaOpcao03(float totalGasto, int numParc) {
-        if (totalGasto > 100){
-            printf("Digite a quantidade de parcelas (3 ate 10): %d", &numParc);
+        do{
+            printf("Digite a quantidade de parcelas (3 ate 10): ");
+            scanf("%d", &numParc);
             float juros = totalGasto * 0.03;
             float valorAoMes = totalGasto / numParc;
             float valorFinal = ((valorAoMes + juros) * numParc);
             return valorFinal;
-
-        }else{
-            printf("Esta opcao e valida somente para compras acima de R$ 100,00.");
-        }
+        }while(numParc >= 3 && numParc <= 10);
 }
-*/
+
+main(){
+    float totalGasto;
+    int opcao, numParc;
+
+    printf("=================================\n");
+    printf("=========== PAGAMENTO ===========\n");
+    printf("Preencha o campo abaixo:\n");
+    printf("VALOR DA COMPRA = R$ ");
+    scanf("%f", &totalGasto);
+    mostraMenu();
+    printf("\n== Digite a opcao correspondente: ");
+    scanf("%d", &opcao);
+    printf("\n=================================\n");
+    printf("===== VALOR FINAL DA COMPRA =====\n");
+
+    switch (opcao){
+        case 1:
+            float retornoCalculaOpcao01 = calculaOpcao01 (totalGasto);
+            //float retornoDesconto = desconto(totalGasto);
+            //printf("DESCONTO = %.2f", desconto);
+            printf("VALOR = R$ %.2f", retornoCalculaOpcao01);    
+            break;
+        case 2:
+            float retornoCalculaOpcao02 = calculaOpcao02 (totalGasto);
+            printf("VALOR = R$ %.2f", retornoCalculaOpcao02);    
+            break;
+        case 3:
+            if (totalGasto > 100){
+                float retornoCalculaOpcao03 = calculaOpcao03 (totalGasto, numParc);
+                //float retornoJuros = juros(totalGasto);
+                //printf("JUROS = %.2f", juros);
+                printf("VALOR = R$ %.2f", retornoCalculaOpcao03);   
+            }else{
+                printf("Esta opcao e valida somente para compras acima de R$ 100,00.");
+            }
+            break;
+
+    default:
+            printf("O numero nao corresponde a nenhuma opcao!");
+    }
+}
