@@ -1,7 +1,7 @@
 /*
 Implemente um algoritmo que:
 
-Inclua até 1000 usuários;   MUDAR DE 3 PARA 1000///////////
+Inclua até 1000 usuários;   OK///////////// SOMENTE MUDAR DE 3 PARA 1000
 Edite um usuário;
 Exclua um usuário;
 Busque um usuário pelo e-mail;
@@ -12,19 +12,18 @@ Obrigatório uso de struct, vetor e função. OK//////////
 
 Obrigatório uso de switch case com char para escolha da opção desejada.  OK/////////////
 
-ATENÇÃO: (1) NA CRIAÇÃO DE NOMECompletoS DE IDENTIFICADORES; (2) NOS TEXTOS DE INTERAÇÃO COM USUÁRIOS – ENTRADA E SAÍDA; (3) NA ORGANIZAÇÃO DO CÓDIGO.
+ATENÇÃO: (1) NA CRIAÇÃO DE NOMECompletoS DE IDENTIFICADORES; (2) NOS TEXTOS DE INTERAÇÃO COM USUÁRIOS – ENTRADA E SAÍDA; (3) NA ORGANIZAÇÃO DO CÓDIGO.  OK/////////////
 
 Dados do usuário:
 
 Id (int) => preenchido automaticamente por números randômicos e não podem ser repetir.   PERGUNTAR////
-Nome completo (string)
-Email (string) => validação do campo: verificar se o caractere "@" aparece
-Sexo (string) => validação do campo: aceitar somente as palavras Feminino, Masculino e Indiferente.
-Endereço (string)
-Altura (double) => validação do campo: aceitar valores entre 1 e 2 m.
-Vacina (int) => validação de 1 para sim e 0 para não 
+Nome completo (string)    OK/////////////
+Email (string) => validação do campo: verificar se o caractere "@" aparece OK/////////////
+Sexo (string) => validação do campo: aceitar somente as palavras Feminino, Masculino e Indiferente. OK/////////////
+Endereço (string) OK/////////////
+Altura (double) => validação do campo: aceitar valores entre 1 e 2 m. OK/////////////
+Vacina (int) => validação de 1 para sim e 0 para não OK/////////////
 */
-
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -42,8 +41,8 @@ typedef struct{
 }Usuario;
 
 void cadastrar(Usuario a[], int indice){
-    char *caractere;
     int achou;
+    int opcaoVacina;
     
 
     a[indice].id = indice + 1; // vai criar um numero aleatorio de 0 ate 10
@@ -54,14 +53,15 @@ void cadastrar(Usuario a[], int indice){
     fflush(stdin);
     fgets(a[indice].nomeCompleto, sizeof(a[indice].nomeCompleto), stdin);
     fflush(stdin);
+
+    //VALIDACAO PARA O CAMPO EMAIL
         do{
             printf("\nEmail: ");
             fflush(stdin);
             fgets(a[indice].email, sizeof(a[indice].email), stdin);
             fflush(stdin);
-      //     caractere = strchr(a[indice].email, '@');
             if(strchr(a[indice].email, '@') == NULL){
-                printf("Email invalido... tente novamente!\n");
+                printf("\nATENCAO: Email invalido... tente novamente! (Exemplo: xxxx@gmail.com)\n");
                 fflush(stdin);
                 achou = 0;
             }else{
@@ -69,26 +69,52 @@ void cadastrar(Usuario a[], int indice){
             } 
         }while(achou == 0);
 
-
+    //VALIDACAO PARA O CAMPO SEXO
         do{
-            printf("\nSexo (Feminino, Masculino e Indiferente): ");
+            printf("Sexo (Feminino, Masculino e Indiferente): ");
             fflush(stdin);
             fgets(a[indice].sexo, sizeof(a[indice].sexo), stdin);
             fflush(stdin);
-            if(a[indice].sexo != 'Feminino' || a[indice].sexo != 'Masculino' || a[indice].sexo != 'Indiferente'){
-                printf("Valor invalido... tente novamente!\n");
+            a[indice].sexo[strcspn(a[indice].sexo, "\n")] = '\0';    // Removendo caracteres de nova linha (\n) do final da entrada
+            if(strcmp(a[indice].sexo, "Feminino") != 0 && strcmp(a[indice].sexo, "Masculino") != 0 && strcmp(a[indice].sexo, "Indiferente") != 0){
+                printf("\nATENCAO: Entrada invalida... tente novamente!\n\n");
+                fflush(stdin);
+                achou = 0;
+            }else{
+                achou = 1;
             }
-        }while(a[indice].email != caractere);
-    printf("\nEndereco: ");
+        }while(achou == 0);
+    printf("Endereco: ");
     fflush(stdin);
     fgets(a[indice].endereco, sizeof(a[indice].endereco), stdin);
     fflush(stdin);
-    printf("Altura: ");
-    fflush(stdin);
-    scanf("%lf", &a[indice].altura);
-    printf("Vacina: ");
-    fflush(stdin);
-    scanf("%d", &a[indice].vacina);
+
+    //VALIDACAO PARA O CAMPO ALTURA
+        do{
+            printf("Altura (1m a 2m): ");
+            fflush(stdin);
+            scanf("%lf", &a[indice].altura);
+            if(a[indice].altura < 1 || a[indice].altura > 2){
+                printf("\nATENCAO: Entrada invalida... tente novamente!\n\n");
+                fflush(stdin);
+                achou = 0;
+            }else{
+                achou = 1;
+            }
+        }while(achou == 0);
+    
+    //VALIDACAO PARA O CAMPO VACINA
+        do{
+            printf("Vacina -> 1 - sim / 0 - nao: ");
+            fflush(stdin);
+            scanf("%d", &a[indice].vacina);
+            if (a[indice].vacina != 1 && a[indice].vacina != 0) {
+                printf("\nATENCAO: Entrada invalida... tente novamente!\n\n");
+                opcaoVacina = 0;
+            } else {
+                opcaoVacina = 1;
+            }
+        }while(opcaoVacina== 0);
 }
 
 /*
@@ -204,6 +230,7 @@ main(){
         printf("\n0 -- Sair");
         printf("\nDigite a opcao escolhida: ");
         scanf("%d", &opcao);
+        fflush(stdin);
 
         switch(opcao){
             case 1:
