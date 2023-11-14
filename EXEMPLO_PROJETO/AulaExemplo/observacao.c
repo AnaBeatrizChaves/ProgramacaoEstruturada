@@ -1,0 +1,6 @@
+/*
+FUNÇÕES PARA AUXILIAR NA CONSTRUÇÃO
+
+-> STRCHR (ACHA UM CARCTERE ESPECÍFICO - existe caractere?)
+-> STRCMP (COMPARA UM CARACTE - String igual?)
+*/
