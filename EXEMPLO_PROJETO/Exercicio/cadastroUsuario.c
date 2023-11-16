@@ -1,28 +1,14 @@
 /*
 Implemente um algoritmo que:
 
-Inclua até 1000 usuários;   OK///////////// SOMENTE MUDAR DE 3 PARA 1000
 Edite um usuário;
 Exclua um usuário;
 Busque um usuário pelo e-mail;
-Imprima todos os usuários cadastrados;
-
-
-Obrigatório uso de struct, vetor e função. OK//////////
-
-Obrigatório uso de switch case com char para escolha da opção desejada.  OK/////////////
-
-ATENÇÃO: (1) NA CRIAÇÃO DE NOMECompletoS DE IDENTIFICADORES; (2) NOS TEXTOS DE INTERAÇÃO COM USUÁRIOS – ENTRADA E SAÍDA; (3) NA ORGANIZAÇÃO DO CÓDIGO.  OK/////////////
 
 Dados do usuário:
 
 Id (int) => preenchido automaticamente por números randômicos e não podem ser repetir.   PERGUNTAR////
-Nome completo (string)    OK/////////////
-Email (string) => validação do campo: verificar se o caractere "@" aparece OK/////////////
-Sexo (string) => validação do campo: aceitar somente as palavras Feminino, Masculino e Indiferente. OK/////////////
-Endereço (string) OK/////////////
-Altura (double) => validação do campo: aceitar valores entre 1 e 2 m. OK/////////////
-Vacina (int) => validação de 1 para sim e 0 para não OK/////////////
+
 */
 #include<stdio.h>
 #include<stdlib.h>
@@ -33,7 +19,7 @@ Vacina (int) => validação de 1 para sim e 0 para não OK/////////////
 typedef struct{
     int id;
     char nomeCompleto[20];
-    char email[20];
+    char email[50];
     char sexo[20];
     char endereco[50];
     double altura;
@@ -114,43 +100,57 @@ void cadastrar(Usuario a[], int indice){
             } else {
                 opcaoVacina = 1;
             }
-        }while(opcaoVacina== 0);
+        }while(opcaoVacina == 0);
 }
 
-/*
+
 void listarUsuarios(Usuario a[], int indice){
     printf("\n--------------------------");
-    printf("\n        LISTAGEM       \n");
+    printf("\n  USUARIOS CADASTARDOS    \n");
     if (indice == 0){
         printf("\nNenhum registro encontrado!");
     }else{
         for(int i = 0; i < indice; i++){
             printf("\nID: %d", a[i].id);
             printf("\nNome Completo: %s", a[i].nomeCompleto);
-            printf("Idade: %d\n", a[i].idade);
-            if (a[i].status == 1){
-                printf("Status: Ativado");
+            printf("Email: %s", a[i].email);
+            printf("Sexo: %s\n", a[i].sexo);
+            printf("Endereco: %s", a[i].endereco);
+            printf("Altura: %.2lf metros\n", a[i].altura);
+            if (a[i].vacina == 1){
+                printf("Vacina: SIM");
+                printf("\n");
             }else{
-                 printf("Status: Desativado");
+                printf("Vacina: NAO");
+                printf("\n");
             }
         }
     }  
 }
 
-void buscar(Usuario a[], int indice, int idBuscar){
-    printf("\n--------------------------");
-    printf("\n         BUSCA         \n");
+void buscar(Usuario a[], int indice, char emailBusca[]){
+    
     for(int i = 0; i < indice; i++){
-        if (idBuscar == a[i].id){
+        if (strcmp(a[i].email, emailBusca) == 0){
             printf("\nID: %d", a[i].id);
             printf("\nNome Completo: %s", a[i].nomeCompleto);
-            printf("Idade: %d", a[i].idade);
+            printf("Email: %s", a[i].email);
+            printf("Sexo: %s\n", a[i].sexo);
+            printf("Endereco: %s", a[i].endereco);
+            printf("Altura: %.2lf metros\n", a[i].altura);
+            if (a[i].vacina == 1){
+                printf("Vacina: SIM");
+                printf("\n");
+            }else{
+                printf("Vacina: NAO");
+                printf("\n");
+            }
             return;
         }
     }
     printf("Registro nao cadastrado!");
 }
-
+/*
 void alterar(Usuario a[], int indice, int idBuscar){
     int opcao;
     printf("\n--------------------------");
@@ -210,13 +210,12 @@ void excluir(Usuario a[], int indice, int idBuscar){
     }
     printf("Registro nao encontrado!");
 }
-
 */
-
 main(){
 
     Usuario a[MAX];
-    int totalCadastros = 0, opcao; //id;
+    int totalCadastros = 0, opcao;
+    char email[50];
     //char decisao;
 
     //repetir o MENU
@@ -247,18 +246,21 @@ main(){
                     opcao = 0; //sair do sistema
                 }
                 break;
-                /*
             case 2:
                 listarUsuarios(a, totalCadastros);
                 printf("\n");
                 printf("\n--------------------------\n");
                 break;
+            
             case 3:
+                printf("\n--------------------------");
+                printf("\n         BUSCAR         \n");
                 printf("Digite o email do usuario que deseja buscar: ");
-                scanf("%d", &id);
-                buscar(a, totalCadastros, id);
+                fgets(email, sizeof(email), stdin);
+                buscar(a, totalCadastros, email);
                 printf("\n--------------------------\n");
                 break;
+            /*
             case 4:
                 printf("Digite o id que deseja alterar: ");
                 scanf("%d", &id);
