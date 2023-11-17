@@ -15,17 +15,16 @@ O resultado final será mostrado ao usuário por meio de um procedimento (mostra
 int validaQuantidade() {
     int quantidade;
 
-    do{
-        printf("\n------- FABRICA DE PECAS -------\n");
-        printf("     $ Calculo de salario $      \n");
-        printf("Digite a quantidade de peças fabricadas: ");
+    printf("\n------- FABRICA DE PECAS -------\n");
+    printf("     $ Calculo de salario $      \n");
+    printf("Digite a quantidade de peças fabricadas pelo funcionário: ");
+    scanf("%d", &quantidade);
+
+    while (quantidade < 0) {
+        printf("Quantidade invalida. Digite um valor que não seja negativo: ");
         scanf("%d", &quantidade);
-        if (quantidade < 0) {
-            printf("Quantidade invalida! Tente novamente...\n");
-        } else {
-            return quantidade;
-        }
-    } while (quantidade < 0); 
+    }
+    return quantidade;
 }
 
 float calculaSalario(int quantidade) {
@@ -49,19 +48,21 @@ void mostraFinal(float salario) {
 main() {
     char resp;
 
-    do{
-    //chamada das funcoes
-    int quantidade = validaQuantidade();
-    float salario = calculaSalario(quantidade);
-    mostraFinal(salario);
-    printf("\n--------------------------------\n");
-    printf("Deseja calcular o salário para outro funcionário? (s/n): ");
-    scanf(" %c", &resp);
+    do {
+        // Chamada das funções
+        int quantidade = validaQuantidade();
+        float salario = calculaSalario(quantidade);
+        mostraFinal(salario);
 
-        if (resp != 's' && resp != 'n') {
-            printf("Entrada invalida! Digite novamente...");
-        }else{
-            return 0;
+        printf("\n--------------------------------\n");
+        printf("Deseja calcular o salário para outro funcionário? (s/n): ");
+        scanf(" %c", &resp);
+
+        while (resp != 's' && resp != 'n') {
+            printf("Entrada inválida! Digite novamente (s/n): ");
+            scanf(" %c", &resp);
         }
-    }while (resp == 's');  
+    } while (resp == 's');
+    //caso a resp for n, cai aqui e o programa encerra
+    printf("Programa encerrado.\n");
 }
