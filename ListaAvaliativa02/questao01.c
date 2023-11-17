@@ -15,54 +15,53 @@ O resultado final será mostrado ao usuário por meio de um procedimento (mostra
 int validaQuantidade() {
     int quantidade;
 
-    while (1) {
+    do{
+        printf("\n------- FABRICA DE PECAS -------\n");
+        printf("     $ Calculo de salario $      \n");
         printf("Digite a quantidade de peças fabricadas: ");
         scanf("%d", &quantidade);
-
-        if (quantidade >= 0) {
-            return quantidade;
+        if (quantidade < 0) {
+            printf("Quantidade invalida! Tente novamente...\n");
         } else {
-            printf("Quantidade inválida. Digite um valor não negativo.\n");
+            return quantidade;
         }
-    }
+    } while (quantidade < 0); 
 }
 
-// Função para calcular o salário total
 float calculaSalario(int quantidade) {
-    float salario_base = 600.0;
-    float adicional_produtividade = 0.0;
+    float sal_base = 600.0;
+    float ad_prod = 0.0;
 
     if (quantidade > 50 && quantidade <= 80) {
-        adicional_produtividade = 0.50 * (quantidade - 50);
+        ad_prod = 0.50 * (quantidade - 50);
     } else if (quantidade > 80) {
-        adicional_produtividade = 0.50 * 30 + 0.75 * (quantidade - 80);
+        ad_prod = 0.50 * 30 + 0.75 * (quantidade - 80);
     }
 
-    float salario_total = salario_base + adicional_produtividade;
-    return salario_total;
+    float sal_total = sal_base + ad_prod;
+    return sal_total;
 }
 
-// Procedimento para mostrar o resultado final
 void mostraFinal(float salario) {
-    printf("O salário total do funcionário é de R$ %.2f\n", salario);
+    printf("----> O salário total do funcionário é de R$ %.2f\n", salario);
 }
 
+main() {
+    char resp;
 
-int main() {
-    while (1) {
-        int quantidade = validaQuantidade();
-        float salario = calculaSalario(quantidade);
-        mostraFinal(salario);
+    do{
+    //chamada das funcoes
+    int quantidade = validaQuantidade();
+    float salario = calculaSalario(quantidade);
+    mostraFinal(salario);
+    printf("\n--------------------------------\n");
+    printf("Deseja calcular o salário para outro funcionário? (s/n): ");
+    scanf(" %c", &resp);
 
-        char continuar;
-        printf("Deseja calcular o salário para outro funcionário? (s/n): ");
-        scanf(" %c", &continuar);
-
-        if (continuar != 's' && continuar != 'S') {
-            break;
+        if (resp != 's' && resp != 'n') {
+            printf("Entrada invalida! Digite novamente...");
+        }else{
+            return 0;
         }
-    }
-
-    return 0;
+    }while (resp == 's');  
 }
-
