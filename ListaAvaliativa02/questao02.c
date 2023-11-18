@@ -63,7 +63,7 @@ void mostraResultado(int abaixoSalarioMinimo, int acimaSalarioMinimo) {
     printf("\n=============================================\n");
 }
 
-int main() {
+main() {
     int abaixoSalarioMinimo = 0;
     int acimaSalarioMinimo = 0;
     char resp;
@@ -117,6 +117,4 @@ int main() {
     } else {
         printf("Nenhum assalariado cadastrado.\n");
     }
-
-    return 0;
 }
