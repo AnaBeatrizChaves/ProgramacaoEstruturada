@@ -9,25 +9,72 @@ Após a leitura dos dados de todos os assalariados pesquisados o seu algoritmo d
 */
 #include <stdio.h>
 
-// Protótipos das funções
-char obterSexo();
-float obterSalario();
-int validaSalario(float salario);
-void classificaSalario(float salario);
-void mostraClassificacao(float salario, char sexo);
-void mostraResultado(int abaixoSalarioMinimo, int acimaSalarioMinimo);
+char obterSexo() {
+    char sexo;
+    printf("Digite o sexo do assalariado (M/F): ");
+    fflush(stdin);
+    scanf(" %c", &sexo);
+    fflush(stdin);
 
-main() {
+
+    // Validação do sexo
+    while (sexo != 'M' && sexo != 'm' && sexo != 'F' && sexo != 'f') {
+        printf("Sexo inválido. Digite novamente (M/F): ");
+        scanf(" %c", &sexo);
+    }
+    return sexo;
+}
+
+float obterSalario() {
+    float salario;
+    printf("Digite o salário do assalariado em reais: R$ ");
+    scanf("%f", &salario);
+    return salario;
+}
+
+int validaSalario(float salario) {
+    return salario > 1.0;
+}
+
+// Sub-algoritmo para classificar o salário
+void classificaSalario(float salario) {
+    
+    if (salario < 1400.0) {
+        printf("--> Classificação do salário: Abaixo do salário mínimo\n");
+    } else if (salario == 1400.0) {
+        printf("--> Classificação do salário: Igual ao salário mínimo\n");
+    } else {
+        printf("--> Classificação do salário: Acima do salário mínimo\n");
+    }
+}
+
+// Sub-algoritmo para mostrar os resultados
+void mostraClassificacao(float salario, char sexo) {
+    printf("--> Salário: R$ %.2f\n", salario);
+    printf("--> Sexo: %s\n", (sexo == 'M' || sexo == 'm') ? "Masculino" : "Feminino");
+    printf("______________________________________________\n");
+}
+
+// Sub-algoritmo para mostrar o resultado final
+void mostraResultado(int abaixoSalarioMinimo, int acimaSalarioMinimo) {
+    printf("\n-------------- RESULTADO FINAL --------------\n");
+    printf("Assalariados abaixo do salário mínimo: %d\n", abaixoSalarioMinimo);
+    printf("Assalariados acima do salário mínimo: %d\n", acimaSalarioMinimo);
+    printf("\n=============================================\n");
+}
+
+int main() {
     int abaixoSalarioMinimo = 0;
     int acimaSalarioMinimo = 0;
     char resp;
+
+    printf("\n============ PESQUISA SALARIAL ==============\n");
 
     do {
         printf("Possui carteira profissional assinada? (s/n): ");
         scanf(" %c", &resp);
 
         if (resp == 's') {
-            // Entrada de dados
             char sexo = obterSexo();
             float salario = obterSalario();
 
@@ -46,7 +93,7 @@ main() {
             // Contagem de assalariados abaixo e acima do salário mínimo
             if (salario < 1400.00) {
                 abaixoSalarioMinimo++;
-            } else {
+            } else if (salario > 1400.0) {
                 acimaSalarioMinimo++;
             }
 
@@ -57,9 +104,10 @@ main() {
                 printf("Entrada inválida! Digite novamente (s/n): ");
                 scanf(" %c", &resp);
             }
-
-        } else if (resp != 'n') {
-            printf("Opção inválida. Digite novamente.\n");
+        } else if (resp == 'n') {
+            printf("Este programa é válido apenas para os assalariados que possuem carteira profissional assinada!\n");
+        } else {
+            printf("Opção inválida.\n");
         }
     } while (resp == 's');
 
@@ -69,56 +117,6 @@ main() {
     } else {
         printf("Nenhum assalariado cadastrado.\n");
     }
-}
 
-// Função para obter o sexo do assalariado
-char obterSexo() {
-    char sexo;
-    printf("Digite o sexo do assalariado (M/F): ");
-    scanf(" %c", &sexo);
-
-    // Validação do sexo
-    while (sexo != 'M' && sexo != 'm' && sexo != 'F' && sexo != 'f') {
-        printf("Sexo inválido. Digite novamente (M/F): ");
-        scanf(" %c", &sexo);
-    }
-
-    return sexo;
-}
-
-// Função para obter o salário do assalariado
-float obterSalario() {
-    float salario;
-    printf("Digite o salário do assalariado em reais: R$ ");
-    scanf("%f", &salario);
-    return salario;
-}
-
-// Função para validar o salário
-int validaSalario(float salario) {
-    return salario > 1.0;
-}
-
-// Sub-algoritmo para classificar o salário
-void classificaSalario(float salario) {
-    if (salario < 1400.0) {
-        printf("Classificação do salário: Abaixo do salário mínimo\n");
-    } else if (salario == 1400.0) {
-        printf("Classificação do salário: Igual ao salário mínimo\n");
-    } else {
-        printf("Classificação do salário: Acima do salário mínimo\n");
-    }
-}
-
-// Sub-algoritmo para mostrar os resultados
-void mostraClassificacao(float salario, char sexo) {
-    printf("Salário: R$ %.2f\n", salario);
-    printf("Sexo: %s\n", (sexo == 'M' || sexo == 'm') ? "Masculino" : "Feminino");
-}
-
-// Sub-algoritmo para mostrar o resultado final
-void mostraResultado(int abaixoSalarioMinimo, int acimaSalarioMinimo) {
-    printf("\nResultado Final:\n");
-    printf("Assalariados abaixo do salário mínimo: %d\n", abaixoSalarioMinimo);
-    printf("Assalariados acima do salário mínimo: %d\n", acimaSalarioMinimo);
+    return 0;
 }
