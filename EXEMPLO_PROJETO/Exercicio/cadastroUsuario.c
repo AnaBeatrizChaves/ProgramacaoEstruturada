@@ -146,25 +146,24 @@ void buscar(Usuario a[], int indice, char emailBusca[]){
         }
     }
 }
-/*
-void alterar(Usuario a[], int indice, int idBuscar){
-    int opcao;
+
+void editar(Usuario a[], int indice, char emailBusca[]){
     printf("\n--------------------------");
-    printf("\n         ALTERACAO         \n");
+    printf("\n         EDICAO         \n");
     for(int i = 0; i < indice; i++){
         if (idBuscar == a[i].id){
             printf("\nID: %d", a[i].id);
             printf("\nNome Completo: %s", a[i].nomeCompleto);
             printf("Idade: %d", a[i].idade);
             printf("\n------------------------\n");
-            printf("1 - Alterar nome Completo \n2 - Alterar idade \n3 - Alterar status \n4 - Alterar todos\n");
+            printf("1 - editar nome Completo \n2 - editar idade \n3 - editar status \n4 - editar todos\n");
             fflush(stdin);
             printf("OPCAO: ");
             fflush(stdin);
             scanf("%d", &opcao);
             fflush(stdin);
             if (opcao == 1){
-                printf("ALTERACAO DO NOMECompleto:");
+                printf("ALTERACAO DO NOME Completo:");
                 fgets(a[i].nomeCompleto, sizeof(a[i].nomeCompleto), stdin);
                 fflush(stdin);
             }else if(opcao == 2){
@@ -192,6 +191,7 @@ void alterar(Usuario a[], int indice, int idBuscar){
     printf("Registro nao cadastrado!");
 }
 
+/*
 void excluir(Usuario a[], int indice, int idBuscar){
     printf("\n--------------------------");
     printf("\n         EXCLUSAO       \n");
@@ -220,7 +220,7 @@ main(){
         printf("1 -- Cadastrar");
         printf("\n2 -- Listar");
         printf("\n3 -- Buscar");
-        printf("\n4 -- Alterar");
+        printf("\n4 -- editar");
         printf("\n5 -- Excluir");
         printf("\n0 -- Sair");
         printf("\nDigite a opcao escolhida: ");
@@ -258,9 +258,9 @@ main(){
                 break;
             /*
             case 4:
-                printf("Digite o id que deseja alterar: ");
+                printf("Digite o id que deseja editar: ");
                 scanf("%d", &id);
-                alterar(a, totalCadastros, id);
+                editar(a, totalCadastros, id);
                 printf("\n--------------------------\n");
                 break;
             case 5:
