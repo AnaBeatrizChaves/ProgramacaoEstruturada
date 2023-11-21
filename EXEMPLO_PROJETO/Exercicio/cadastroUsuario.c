@@ -3,10 +3,6 @@ Implemente um algoritmo que:
 
 Edite um usuário;
 Exclua um usuário;
-Busque um usuário pelo e-mail;
-
-Dados do usuário:
-
 Id (int) => preenchido automaticamente por números randômicos e não podem ser repetir.   PERGUNTAR////
 
 */
@@ -129,7 +125,6 @@ void listarUsuarios(Usuario a[], int indice){
 }
 
 void buscar(Usuario a[], int indice, char emailBusca[]){
-    
     for(int i = 0; i < indice; i++){
         if (strcmp(a[i].email, emailBusca) == 0){
             printf("\nID: %d", a[i].id);
@@ -146,9 +141,10 @@ void buscar(Usuario a[], int indice, char emailBusca[]){
                 printf("\n");
             }
             return;
+        }else {
+            printf("Registro nao cadastrado!");
         }
     }
-    printf("Registro nao cadastrado!");
 }
 /*
 void alterar(Usuario a[], int indice, int idBuscar){
