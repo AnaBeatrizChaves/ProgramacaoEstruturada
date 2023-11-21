@@ -30,8 +30,10 @@ main(){
     Aluno *a;
 
     a = cadastrar();
-    
+
     printf("Nome: %s", a->nome);
     printf("Idade: %d", a->idade);
     printf("\nNota: %f", a->nota);
+
+    free(a);
 }
