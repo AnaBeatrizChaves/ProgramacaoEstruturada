@@ -1,14 +1,34 @@
 /*
 Implemente um algoritmo que:
 
+Inclua até 1000 usuários;
 Edite um usuário;
 Exclua um usuário;
-Id (int) => preenchido automaticamente por números randômicos e não podem ser repetir.   PERGUNTAR////
+Busque um usuário pelo e-mail;
+Imprima todos os usuários cadastrados;
 
+
+Obrigatório uso de struct, vetor e função. 
+
+Obrigatório uso de switch case com char para escolha da opção desejada.
+
+ATENÇÃO: (1) NA CRIAÇÃO DE NOMES DE IDENTIFICADORES; (2) NOS TEXTOS DE INTERAÇÃO COM USUÁRIOS – ENTRADA E SAÍDA; (3) NA ORGANIZAÇÃO DO CÓDIGO.
+
+Dados do usuário:
+
+Id (int) => preenchido automaticamente por números randômicos e não podem ser repetir.
+Nome completo (string)
+Email (string) => validação do campo: verificar se o caractere "@" aparece
+Sexo (string) => validação do campo: aceitar somente as palavras Feminino, Masculino e Indiferente.
+Endereço (string)
+Altura (double) => validação do campo: aceitar valores entre 1 e 2 m.
+Vacina (int) => validação de 1 para sim e 0 para não 
 */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<time.h>
 #define  MAX 3 
 
 //registro
@@ -26,8 +46,10 @@ void cadastrar(Usuario a[], int indice){
     int achou;
     int opcaoVacina;
     
-
-    a[indice].id = indice + 1; // vai criar um numero aleatorio de 0 ate 10
+    //id automatico
+    srand(time(NULL));
+    a[indice].id = rand() % 100;
+    fflush(stdin);
     printf("\n--------------------------");
     printf("\n         CADASTRO         \n");
     printf("\nPreencha os campos abaixo:");
@@ -102,7 +124,7 @@ void cadastrar(Usuario a[], int indice){
 
 void listarUsuarios(Usuario a[], int indice){
     printf("\n--------------------------");
-    printf("\n  USUARIOS CADASTARDOS    \n");
+    printf("\n  USUARIOS CADASTRADOS    \n");
     if (indice == 0){
         printf("\nNenhum registro encontrado!");
     }else{
@@ -148,55 +170,103 @@ void buscar(Usuario a[], int indice, char emailBusca[]){
 }
 
 void editar(Usuario a[], int indice, char emailBusca[]){
-    printf("\n--------------------------");
-    printf("\n         EDICAO         \n");
+    int opcaoVacina;
+    int achou;
     for(int i = 0; i < indice; i++){
-        if (idBuscar == a[i].id){
+        if (emailBusca == a[i].email){
             printf("\nID: %d", a[i].id);
             printf("\nNome Completo: %s", a[i].nomeCompleto);
-            printf("Idade: %d", a[i].idade);
-            printf("\n------------------------\n");
-            printf("1 - editar nome Completo \n2 - editar idade \n3 - editar status \n4 - editar todos\n");
-            fflush(stdin);
-            printf("OPCAO: ");
-            fflush(stdin);
-            scanf("%d", &opcao);
-            fflush(stdin);
-            if (opcao == 1){
-                printf("ALTERACAO DO NOME Completo:");
-                fgets(a[i].nomeCompleto, sizeof(a[i].nomeCompleto), stdin);
-                fflush(stdin);
-            }else if(opcao == 2){
-                printf("ALTERACAO DA IDADE:");
-                scanf("%d", &a[i].idade);
-                fflush(stdin);
-            }else if(opcao == 3){
-                printf("ALTERACAO DO STATUS:");
-                scanf("%d", &a[i].status);
-                fflush(stdin);
-            }else if(opcao == 4){
-                printf("ALTERACAO DO NOME COMPLETO:");
-                fgets(a[i].nomeCompleto, sizeof(a[i].nomeCompleto), stdin);
-                printf("ALTERACAO DA IDADE:");
-                scanf("%d", &a[i].idade);
-                printf("ALTERACAO DO STATUS:");
-                scanf("%d", &a[i].status);
-                fflush(stdin);
+            printf("Email: %s", a[i].email);
+            printf("Sexo: %s\n", a[i].sexo);
+            printf("Endereco: %s", a[i].endereco);
+            printf("Altura: %.2lf metros\n", a[i].altura);
+            if (a[i].vacina == 1){
+                printf("Vacina: SIM");
+                printf("\n");
             }else{
-                printf("Opcao invalida!");
+                printf("Vacina: NAO");
+                printf("\n");
             }
-            return;
+            printf("\n------------------------\n");
+            printf("\nALTERACAO DOS DADOS CADASTRAIS\n");
+            printf("\nNome completo: ");
+            fflush(stdin);
+            fgets(a[indice].nomeCompleto, sizeof(a[indice].nomeCompleto), stdin);
+            fflush(stdin);
+
+    //VALIDACAO PARA O CAMPO EMAIL
+        do{
+            printf("\nEmail: ");
+            fflush(stdin);
+            fgets(a[indice].email, sizeof(a[indice].email), stdin);
+            fflush(stdin);
+            if(strchr(a[indice].email, '@') == NULL){
+                printf("\nATENCAO: Email invalido... tente novamente! (Exemplo: xxxx@gmail.com)\n");
+                fflush(stdin);
+                achou = 0;
+            }else{
+                achou = 1;
+            } 
+        }while(achou == 0);
+
+    //VALIDACAO PARA O CAMPO SEXO
+        do{
+            printf("Sexo (Feminino, Masculino e Indiferente): ");
+            fflush(stdin);
+            fgets(a[indice].sexo, sizeof(a[indice].sexo), stdin);
+            fflush(stdin);
+            a[indice].sexo[strcspn(a[indice].sexo, "\n")] = '\0';    // Removendo caracteres de nova linha (\n) do final da entrada
+            if(strcmp(a[indice].sexo, "Feminino") != 0 && strcmp(a[indice].sexo, "Masculino") != 0 && strcmp(a[indice].sexo, "Indiferente") != 0){
+                printf("\nATENCAO: Entrada invalida... tente novamente!\n\n");
+                fflush(stdin);
+                achou = 0;
+            }else{
+                achou = 1;
+            }
+        }while(achou == 0);
+    printf("Endereco: ");
+    fflush(stdin);
+    fgets(a[indice].endereco, sizeof(a[indice].endereco), stdin);
+    fflush(stdin);
+
+    //VALIDACAO PARA O CAMPO ALTURA
+        do{
+            printf("Altura (1m a 2m): ");
+            fflush(stdin);
+            scanf("%lf", &a[indice].altura);
+            if(a[indice].altura < 1 || a[indice].altura > 2){
+                printf("\nATENCAO: Entrada invalida... tente novamente!\n\n");
+                fflush(stdin);
+                achou = 0;
+            }else{
+                achou = 1;
+            }
+        }while(achou == 0);
+    
+    //VALIDACAO PARA O CAMPO VACINA
+        do{
+            printf("Vacina -> 1 - sim / 0 - nao: ");
+            fflush(stdin);
+            scanf("%d", &a[indice].vacina);
+            if (a[indice].vacina != 1 && a[indice].vacina != 0) {
+                printf("\nATENCAO: Entrada invalida... tente novamente!\n\n");
+                opcaoVacina = 0;
+            } else {
+                opcaoVacina = 1;
+            }
+        }while(opcaoVacina == 0);
+
+         
         }
     }
     printf("Registro nao cadastrado!");
 }
 
-/*
-void excluir(Usuario a[], int indice, int idBuscar){
+void excluir(Usuario a[], int indice, char emailBusca[]){
     printf("\n--------------------------");
     printf("\n         EXCLUSAO       \n");
     for(int i = 0; i < indice; i++){
-        if (idBuscar == a[i].id){
+        if (emailBusca == a[i].email){
             for(int j = i; j < indice - 1; j++){
                 a[j] = a[j + 1];
             }
@@ -206,13 +276,12 @@ void excluir(Usuario a[], int indice, int idBuscar){
     }
     printf("Registro nao encontrado!");
 }
-*/
+
 main(){
 
     Usuario a[MAX];
     int totalCadastros = 0, opcao;
     char email[50];
-    //char decisao;
 
     //repetir o MENU
     do{
@@ -251,33 +320,37 @@ main(){
             case 3:
                 printf("\n--------------------------");
                 printf("\n         BUSCAR         \n");
+                fflush(stdin);
                 printf("Digite o email do usuario que deseja buscar: ");
+                fflush(stdin);
                 fgets(email, sizeof(email), stdin);
+                fflush(stdin);
                 buscar(a, totalCadastros, email);
                 printf("\n--------------------------\n");
                 break;
-            /*
+            
             case 4:
-                printf("Digite o id que deseja editar: ");
-                scanf("%d", &id);
-                editar(a, totalCadastros, id);
+                printf("\n--------------------------");
+                printf("\n         EDITAR         \n");
+                printf("Digite o email do usuario que deseja editar: ");
+                fflush(stdin);
+                fgets(email, sizeof(email), stdin);
+                fflush(stdin);
+                editar(a, totalCadastros, email);
                 printf("\n--------------------------\n");
                 break;
+                
             case 5:
-                printf("Digite o id que deseja excluir: ");
-                scanf("%d", &id);
+                printf("\n--------------------------");
+                printf("\n         EXCLUIR        \n");
+                printf("Digite o email do usuario que deseja excluir: ");
                 fflush(stdin);
-                printf("Deseja realmente excluir? s / n\n");
-                scanf("%c", &decisao);
-                if (decisao == 's'){
-                    excluir(a, totalCadastros, id);
-                    totalCadastros--;
-                    printf("\n--------------------------\n");
-                }else{
-                    printf("Exclusao Cancelada!");
-                    printf("\n--------------------------\n");
-                }
-                break;*/
+                fgets(email, sizeof(email), stdin);
+                fflush(stdin);
+                excluir(a, totalCadastros, email);
+                totalCadastros--;
+                printf("\n--------------------------\n");
+                break;
         }
     }while(opcao != 0);
 }
