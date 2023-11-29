@@ -1,15 +1,13 @@
 #include <stdio.h>
 
-int main() {
+main() {
     int vetor[10];
     
-    // Leia 10 valores e armazene no vetor
     for (int i = 0; i < 10; i++) {
         printf("Digite o %do valor: ", i + 1);
         scanf("%d", &vetor[i]);
     }
     
-    // Verifique e imprima os valores repetidos apenas uma vez
     printf("Valores repetidos:\n");
     for (int i = 0; i < 10; i++) {
         for (int j = i + 1; j < 10; j++) { //POSICAO SUBSEQUENTE
@@ -29,6 +27,4 @@ int main() {
             }
         }
     }
-    
-    return 0;
 }
