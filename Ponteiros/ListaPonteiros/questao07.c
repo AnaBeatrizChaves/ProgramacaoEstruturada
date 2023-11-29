@@ -5,7 +5,19 @@
 #include<stdio.h>
 #include<string.h>
 
+void calcularSoma(int *a, int b) {
+    *a = *a + b;
+}
 main(){
+    int valorA, valorB;
 
+    printf("Digite o valor de A: ");
+    scanf("%d", &valorA);
+    printf("Digite o valor de B: ");
+    scanf("%d", &valorB);
     
+    calcularSoma(&valorA, valorB);
+
+    printf("Novo valor de A: %d\n", valorA);
+    printf("Valor de B: %d\n", valorB);
 }

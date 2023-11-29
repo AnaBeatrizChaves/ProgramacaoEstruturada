@@ -6,6 +6,5 @@
 #include<string.h>
 
 main(){
-
-    
+  
 }
