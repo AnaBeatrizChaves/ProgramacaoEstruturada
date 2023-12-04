@@ -122,6 +122,7 @@ Pessoa* excluir(Pessoa *lista, int idBusca){
     return lista;
 }
 
+//LIBERAR LISTA
 void liberarLista(Pessoa *lista){
     Pessoa *atual = lista;
     Pessoa *prox;
