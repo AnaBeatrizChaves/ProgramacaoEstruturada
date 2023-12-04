@@ -122,10 +122,19 @@ Pessoa* excluir(Pessoa *lista, int idBusca){
     return lista;
 }
 
+void liberarLista(Pessoa *lista){
+    Pessoa *atual = lista;
+    Pessoa *prox;
+    while(atual != NULL){
+        prox = atual->prox;
+        free(atual);
+        atual = prox;
+    }
+}
 
 main(){
     Pessoa *lista = criarListaVazia(); //apontar para a PRIMEIRA pessoa da lista ==> (Pessoa *lista = NULL) 
-    Pessoa *encontrada; // vai guardar o endereco da pessoa encontrada
+    Pessoa *encontrada; // vai guardar o endereco da pessoa encontrada para excluir ou alterar
     int opcao, idBusca;
     do{
         printf("\nDigite 1 para cadastrar uma pessoa");
@@ -169,4 +178,6 @@ main(){
          
         }
     }while(opcao != 0);
+
+     liberarLista(lista);    
 }
