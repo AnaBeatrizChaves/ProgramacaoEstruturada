@@ -47,8 +47,10 @@ Produto* cadastrar(Produto *lista){
     fflush(stdin);
     printf("DESCRICAO: ");
     fflush(stdin);
+    limparBuffer();
     fgets(novoProduto->descricao, sizeof(novoProduto->descricao), stdin);
     fflush(stdin);
+    limparBuffer();
     printf("\nQUANTIDADE: ");
     scanf("%d", &novoProduto->quantidade);
     printf("VALOR: R$");
@@ -140,6 +142,11 @@ void liberarLista(Produto *lista){
         free(atual);
         atual = prox;
     }
+}
+
+void limparBuffer() {
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF);
 }
 
 main(){

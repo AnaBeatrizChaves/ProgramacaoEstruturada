@@ -42,6 +42,11 @@ typedef struct{
     int vacina;
 }Usuario;
 
+void limparBuffer() {
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF);
+}
+
 void cadastrar(Usuario a[], int indice){
     int achou;
     int opcaoVacina;
@@ -54,13 +59,13 @@ void cadastrar(Usuario a[], int indice){
     printf("\n         CADASTRO         \n");
     printf("\nPreencha os campos abaixo:");
     printf("\nNome completo: ");
-    fflush(stdin);
     fgets(a[indice].nomeCompleto, sizeof(a[indice].nomeCompleto), stdin);
     fflush(stdin);
+    limparBuffer();
 
     //VALIDACAO PARA O CAMPO EMAIL
         do{
-            printf("\nEmail: ");
+            printf("Email: ");
             fflush(stdin);
             fgets(a[indice].email, sizeof(a[indice].email), stdin);
             fflush(stdin);
